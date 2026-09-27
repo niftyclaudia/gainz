@@ -4,11 +4,11 @@ tabs: [lunch, dinner]
 byline: The House Kitchen
 serves: 2
 protein_g: 38
-image:
-image_alt:
-image_credit:
-image_source:
-image_license:
+image: images/beef-potato-bowl.jpg
+image_alt: "Black-and-white photograph of a Hereford bull standing beside a wooden barn"
+image_credit: "Arthur Rothstein, Purebred Hereford bull, Willow Creek Ranch, Montana, 1939. Library of Congress, FSA/OWI Collection"
+image_source: https://www.loc.gov/pictures/item/2017725082/
+image_license: "No known restrictions (U.S. Farm Security Administration photograph)"
 ---
 
 The turkey bowl's heartier cousin. Crumbled beef browned hard with garlic, spinach folded in at the last minute, all of it over a pile of roasted sweet and golden potatoes. Simple, salty and filling after a ride.

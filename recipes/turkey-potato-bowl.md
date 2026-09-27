@@ -4,11 +4,11 @@ tabs: [lunch, dinner]
 byline: The House Kitchen
 serves: 2
 protein_g: 40
-image:
-image_alt:
-image_credit:
-image_source:
-image_license:
+image: images/turkey-potato-bowl.jpg
+image_alt: "Engraving of two turkeys standing in a field, printed in black on a red cover"
+image_credit: "Cover of Practical Turkey Raising by Fanny Field, R. B. Mitchell, Chicago, 1887. Library of Congress via Internet Archive"
+image_source: https://archive.org/details/practicalturkeyr00fiel
+image_license: "Public domain (published 1887; no known copyright restrictions)"
 ---
 
 A two-potato bowl built for a long-run day. Sweet and golden potatoes roast at the start of the week; on the night, the turkey browns with peppers and cumin in one pan, the spinach wilts in the drippings, and it all goes over the potatoes. Plenty of carbs to refill and a solid dose of protein to rebuild.
