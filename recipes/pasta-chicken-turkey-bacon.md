@@ -5,11 +5,11 @@ byline: The House Kitchen
 serves: 1
 # Estimate: ~1½ cups cooked pasta, 4 oz cooked chicken, 2 slices turkey bacon.
 protein_g: 45
-image:
-image_alt:
-image_credit:
-image_source:
-image_license:
+image: images/pasta-chicken-turkey-bacon.jpg
+image_alt: "Illustration of a heaped plate of spaghetti beside a wicker-wrapped wine bottle on a green background"
+image_credit: "Cover of 'Macaroni Joe' sheet music, Jerome H. Remick & Co., 1910. Gaylord Music Library, Washington University in St. Louis, via Internet Archive"
+image_source: https://archive.org/details/b8849472x
+image_license: "Public domain (published 1910; Public Domain Mark 1.0)"
 ---
 
 A leftovers dinner that tastes like a plan. Yesterday's pasta, some cooked chicken and two slices of turkey bacon, warmed together in one pan until the edges crisp. Carbs for tomorrow's miles, done in ten minutes.

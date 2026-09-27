@@ -1,6 +1,7 @@
-// Downloads an image into images/ and records it in a recipe's frontmatter.
+// Saves an image into images/ and records it in a recipe's frontmatter.
+// The image can be a URL (downloaded) or a local file (copied), e.g. a cropped scan.
 //
-//   node scripts/add-image.mjs <recipe-slug> <image-url> \
+//   node scripts/add-image.mjs <recipe-slug> <image-url-or-file> \
 //     --source "<page URL describing the image>" \
 //     --license "Public domain" \
 //     --credit "Artist, Title (Book, 1890). Library" \
@@ -18,21 +19,29 @@ const opts = {};
 for (let i = 0; i < rest.length; i += 2) opts[rest[i].replace(/^--/, "")] = rest[i + 1];
 
 if (!slug || !url || !opts.source || !opts.license || !opts.credit || !opts.alt) {
-  console.error("Usage: node scripts/add-image.mjs <slug> <image-url> --source URL --license TEXT --credit TEXT --alt TEXT [--treatment duotone]");
+  console.error("Usage: node scripts/add-image.mjs <slug> <image-url-or-file> --source URL --license TEXT --credit TEXT --alt TEXT [--treatment duotone]");
   process.exit(1);
 }
 
 const recipePath = join(root, "recipes", `${slug}.md`);
 let recipe = await readFile(recipePath, "utf8");
 
-const res = await fetch(url, { headers: { "user-agent": "gainz-recipe-book/1.0 (personal, non-commercial)" } });
-if (!res.ok) throw new Error(`Download failed: ${res.status} ${res.statusText}`);
-const type = res.headers.get("content-type") || "";
-const ext = { "image/jpeg": ".jpg", "image/png": ".png", "image/webp": ".webp", "image/gif": ".gif" }[type.split(";")[0]] ||
-  extname(new URL(url).pathname).toLowerCase() || ".jpg";
+let data;
+let ext;
+if (/^https?:\/\//.test(url)) {
+  const res = await fetch(url, { headers: { "user-agent": "gainz-recipe-book/1.0 (personal, non-commercial)" } });
+  if (!res.ok) throw new Error(`Download failed: ${res.status} ${res.statusText}`);
+  const type = (res.headers.get("content-type") || "").split(";")[0];
+  ext = { "image/jpeg": ".jpg", "image/png": ".png", "image/webp": ".webp", "image/gif": ".gif" }[type] ||
+    extname(new URL(url).pathname).toLowerCase() || ".jpg";
+  data = Buffer.from(await res.arrayBuffer());
+} else {
+  data = await readFile(resolve(url));
+  ext = extname(url).toLowerCase().replace(".jpeg", ".jpg") || ".jpg";
+}
 const file = `images/${slug}${ext}`;
 await mkdir(join(root, "images"), { recursive: true });
-await writeFile(join(root, file), Buffer.from(await res.arrayBuffer()));
+await writeFile(join(root, file), data);
 
 const quote = (v) => `"${String(v).replace(/"/g, "'")}"`;
 const fields = {
