@@ -1,0 +1,11 @@
+{
+  "name": "gainz-recipe-book",
+  "private": true,
+  "type": "module",
+  "description": "A vintage ring-bound recipe book for the household.",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "check": "node scripts/check.mjs"
+  },
+  "engines": { "node": ">=18" }
+}
